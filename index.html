@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html,body{
+            height: 100vh;
+            width: 100%;
+        }
+
+        header{
+            text-align: center;
+            height: 130px;
+            width: 100%;
+            background-color: rgb(255, 123, 0);
+        }
+        header h1{
+            padding-top: 35px;
+        }
+        section.formulario{
+            background-color: rgb(0, 132, 255);
+            width: 100%;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5%;
+
+        }
+        section.formulario .container{
+            max-width: 400px;
+            width: 100%;
+            height: 300px;
+            background-color: rgb(209, 209, 209);
+            border-radius: 15px;
+            box-shadow: 0 5px 5px 0;
+            text-align: center;
+            padding: 50px 0;
+        }
+        section.formulario .container h2{
+            margin-bottom: 25px;
+        }
+        .container input[type=text]{
+            width: 80%;
+            height: 30px;
+            margin-bottom: 25px;
+        }
+        .container input[type=submit]{
+            width: 120px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(9, 62, 131);
+            color: white;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+        .container input[type=submit]:hover{
+            background-color: rgb(4, 33, 71);
+            border: 1px solid rgb(0, 0, 0) ;
+        }
+
+        .container span{
+            color: black;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+    <title>Embaralhador</title>
+</head>
+<body>
+    <header>
+        <h1>Vamos Embaralhar!</h1>
+    </header>
+    <section class="formulario">
+        <div class="container">
+            <h2>Digite uma palavra</h2>
+            <form>
+                <input type="text" id="palavra" name="palavra">
+                <div class="form-wrapper">
+                    <input type="submit" value="Embaralhar" id="embaralhar">
+                </div>
+            </form>
+
+            <span id="resultado"></span>
+        </div>
+        
+    </section>
+    
+
+
+    <script>
+        const embaralhar = document.getElementById('embaralhar')
+        
+        embaralhar.addEventListener("click", function(e){
+            e.preventDefault();
+
+            var palavra = document.getElementById('palavra')
+            const value = palavra.value
+
+            function embaralhar(palavra){
+            
+
+                const letrasNaOrdem = palavra.split('')
+                const letrasEmbaralhadas = []
+
+                while(letrasNaOrdem.length){
+                    const sorteado = Math.floor(Math.random() * letrasNaOrdem.length)
+                    const letraSelecionada = letrasNaOrdem.splice(sorteado, 1)[0]
+                    letrasEmbaralhadas.push(letraSelecionada)
+                }
+                return letrasEmbaralhadas.join(" ")
+        }
+        
+            //document.write(embaralhar(value))
+            document.getElementById('resultado').innerHTML = embaralhar(value)
+        })
+        
+        
+        /*
+        
+        
+        */
+        
+       
+    </script>
+</body>
+</html>
